@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Opponents Performance",
+  "version": "1.0",
+  "description": "Get detailed team performance stats for PRACC matches and searches",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "https://pracc.com/*",
+    "https://valorant-api.com/*",
+    "https://www.vlr.gg/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://pracc.com/matches*", "https://pracc.com/search*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["popup.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Opponents Performance"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
